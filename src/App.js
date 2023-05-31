@@ -1,11 +1,10 @@
+import Home from "./Page/Home";
+
 function App() {
   return (
     <div>
       {" "}
-      Todo APP
-      <button type="button" class="btn btn-primary">
-        Primary
-      </button>
+      <Home />
     </div>
   );
 }
