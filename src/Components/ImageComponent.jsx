@@ -1,4 +1,4 @@
-export default function ({ className, width, height, src, alt }) {
+export default function ImageComponent({ className, width, height, src, alt }) {
   return (
     <div>
       <img

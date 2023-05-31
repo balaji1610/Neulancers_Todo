@@ -1,5 +1,7 @@
 import CurrentDate from "./CurrentDate";
 
+import ImageComponent from "../Components/ImageComponent";
+import AddPlusIcon from "../Images/AddPlusIcon.png";
 export default function TopHomeScreen() {
   return (
     <div>
@@ -13,7 +15,17 @@ export default function TopHomeScreen() {
             <div className="col-md-4 col-sm-4">
               <h1>TO-DO-APP</h1>{" "}
             </div>
-            <div className="col-md-4 col-sm-4">3 </div>
+            <div className="col-md-4 col-sm-4">
+              <span style={{ cursor: "pointer", display: "inline-block" }}>
+                {" "}
+                <ImageComponent
+                  src={AddPlusIcon}
+                  width="70"
+                  height="70"
+                  alt="AddPlusIcon"
+                />
+              </span>
+            </div>
           </div>
         </div>
       </div>
