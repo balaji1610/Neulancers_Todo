@@ -24,9 +24,9 @@ export default function AddScreen({
           <InputComponent
             value={textarea}
             placeholder="Write A Text"
-            maxlength="25"
+            maxlength="45"
             onChange={inputChange}
-            style={{ width: "46vh", height: "10vh" }}
+            style={{ width: "76vh", height: "10vh" }}
           />
           ADD STATUS :
           <Dropdown value={getStatus} options={options} onChange={dropdown} />
@@ -60,7 +60,7 @@ export default function AddScreen({
           <span style={{ color: "red", display: "inline-block" }}>
             <h3>{textarea.length}</h3>
           </span>
-          <h3 style={{ color: "#000000", display: "inline-block" }}>/25</h3>
+          <h3 style={{ color: "#000000", display: "inline-block" }}>/45</h3>
         </div>
       </div>
     </div>

@@ -2,6 +2,8 @@ import TopHomeScreen from "../Containers/TopHomeScreen";
 import AddScreen from "../Containers/AddScreen";
 import { useState } from "react";
 import { Todoitems } from "../Utillis/Todoitems";
+import MainHomeScreen from "../Containers/MainHomeScreen";
+
 let id = 1;
 export default function Home() {
   const [Dataarray, setDataArray] = useState(Todoitems);
@@ -26,7 +28,7 @@ export default function Home() {
 
     const changeTextarea = (e) => {
       const value = e.target.value;
-      if (value.length <= 25) {
+      if (value.length <= 45) {
         setTextArea(value);
       }
     };
@@ -63,7 +65,26 @@ export default function Home() {
     SubmitHandleClick,
   } = AddscrenModuleOperations;
 
-  console.log(Dataarray, "Dataarray");
+  //Edit Screen Module
+
+  const EditScreenModule = (function () {
+    const hadleEditClick = (id) => {
+      alert(id);
+    };
+    return { hadleEditClick };
+  })();
+
+  const { hadleEditClick } = EditScreenModule;
+
+  //Delete Screen Module
+
+  const DeleteScreenModule = (function () {
+    const handleDeleteClick = (id) => {
+      alert(id);
+    };
+    return { handleDeleteClick };
+  })();
+  const { handleDeleteClick } = DeleteScreenModule;
   return (
     <div>
       <TopHomeScreen onClick={handleAddicon} />
@@ -79,19 +100,11 @@ export default function Home() {
         />
       )}
 
-      {Dataarray.map((elm) => {
-        const { id, taskname, status } = elm;
-        return (
-          <>
-            <ul>
-              <li key={id}>
-                <p> {taskname}</p>
-                <p> {status}</p>
-              </li>
-            </ul>
-          </>
-        );
-      })}
+      <MainHomeScreen
+        onClickEdit={hadleEditClick}
+        onClickDelete={handleDeleteClick}
+        Dataarray={Dataarray}
+      />
     </div>
   );
 }

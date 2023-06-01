@@ -1,4 +1,11 @@
-export default function ImageComponent({ className, width, height, src, alt }) {
+export default function ImageComponent({
+  className,
+  width,
+  height,
+  src,
+  alt,
+  style,
+}) {
   return (
     <div>
       <img
@@ -7,6 +14,7 @@ export default function ImageComponent({ className, width, height, src, alt }) {
         height={height}
         src={src}
         alt={alt}
+        style={style}
       />
     </div>
   );
