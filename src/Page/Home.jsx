@@ -1,13 +1,12 @@
-import TopHomeScreen from "../Containers/TopHomeScreen";
-import AddScreen from "../Containers/AddScreen";
 import { useState } from "react";
-import { Todoitems } from "../Utillis/Todoitems";
+import TopHomeScreen from "../Containers/TopHomeScreen";
 import MainHomeScreen from "../Containers/MainHomeScreen";
+import AddScreen from "../Containers/AddScreen";
 import EditScreen from "../Containers/EditScreen";
 import DeleteScreen from "../Containers/DeleteScreen";
-let id = 1;
+
 export default function Home() {
-  const [Dataarray, setDataArray] = useState(Todoitems);
+  const [Dataarray, setDataArray] = useState([]);
 
   //AddscrenModule
   const [addmodel, setModel] = useState(false);
@@ -42,12 +41,14 @@ export default function Home() {
       e.preventDefault();
       setTextArea("");
       setGetStatus("");
-      const update = [
-        ...Dataarray,
-        { id: id++, taskname: textarea, status: getStatus },
-      ];
 
-      setDataArray(update);
+      const DataStructure = {
+        id: Dataarray.length + 1,
+        taskname: textarea,
+        status: getStatus,
+      };
+      const updateData = [...Dataarray, DataStructure];
+      setDataArray(updateData);
     };
 
     return {
