@@ -3,7 +3,8 @@ import AddScreen from "../Containers/AddScreen";
 import { useState } from "react";
 import { Todoitems } from "../Utillis/Todoitems";
 import MainHomeScreen from "../Containers/MainHomeScreen";
-
+import EditScreen from "../Containers/EditScreen";
+import DeleteScreen from "../Containers/DeleteScreen";
 let id = 1;
 export default function Home() {
   const [Dataarray, setDataArray] = useState(Todoitems);
@@ -66,31 +67,39 @@ export default function Home() {
   } = AddscrenModuleOperations;
 
   //Edit Screen Module
-
+  const [editScreen, SetEditScreen] = useState(false);
   const EditScreenModule = (function () {
-    const hadleEditClick = (id) => {
-      alert(id);
+    const hadleEditClick = () => {
+      SetEditScreen(true);
     };
-    return { hadleEditClick };
+
+    const handleEditCancelClick = () => {
+      SetEditScreen(false);
+    };
+    return { hadleEditClick, handleEditCancelClick };
   })();
 
-  const { hadleEditClick } = EditScreenModule;
+  const { hadleEditClick, handleEditCancelClick } = EditScreenModule;
 
   //Delete Screen Module
-
+  const [deleteItem, setDeleteItem] = useState(false);
   const DeleteScreenModule = (function () {
-    const handleDeleteClick = (id) => {
-      alert(id);
+    const handleDeleteClick = () => {
+      setDeleteItem(true);
     };
-    return { handleDeleteClick };
+    const handleDeleteCancel = () => {
+      setDeleteItem(false);
+    };
+    return { handleDeleteClick, handleDeleteCancel };
   })();
-  const { handleDeleteClick } = DeleteScreenModule;
+  const { handleDeleteClick, handleDeleteCancel } = DeleteScreenModule;
   return (
     <div>
       <TopHomeScreen onClick={handleAddicon} />
 
       {addmodel && (
         <AddScreen
+          open={addmodel}
           onClick={handleCancelAddicon}
           inputChange={changeTextarea}
           dropdown={changeGetValue}
@@ -105,6 +114,20 @@ export default function Home() {
         onClickDelete={handleDeleteClick}
         Dataarray={Dataarray}
       />
+
+      {editScreen && (
+        <EditScreen
+          open={editScreen}
+          handleEditCancelClick={handleEditCancelClick}
+        />
+      )}
+
+      {deleteItem && (
+        <DeleteScreen
+          open={deleteItem}
+          handleDeleteCancel={handleDeleteCancel}
+        />
+      )}
     </div>
   );
 }
