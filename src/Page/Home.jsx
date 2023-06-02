@@ -38,6 +38,8 @@ export default function Home() {
     };
 
     const handleCancelAddicon = () => {
+      setTextArea("");
+      setGetStatus("");
       setModel(false);
     };
 
@@ -51,7 +53,9 @@ export default function Home() {
     const changeGetValue = (e) => {
       setGetStatus(e.target.value);
     };
-
+    const handleEditClear = () => {
+      setTextArea("");
+    };
     const SubmitHandleClick = (e) => {
       e.preventDefault();
       setTextArea("");
@@ -72,6 +76,7 @@ export default function Home() {
       changeTextarea,
       changeGetValue,
       SubmitHandleClick,
+      handleEditClear,
     };
   })();
   const {
@@ -80,6 +85,7 @@ export default function Home() {
     changeTextarea,
     changeGetValue,
     SubmitHandleClick,
+    handleEditClear,
   } = AddscrenModuleOperations;
 
   //Edit Screen Module
@@ -95,6 +101,7 @@ export default function Home() {
     const handleEditCancelClick = () => {
       SetEditScreen(false);
     };
+
     return { hadleEditClick, handleEditCancelClick };
   })();
 
@@ -122,6 +129,7 @@ export default function Home() {
         <AddScreen
           open={addmodel}
           onClick={handleCancelAddicon}
+          handleEditClear={handleEditClear}
           inputChange={changeTextarea}
           dropdown={changeGetValue}
           SubmitHandleClick={SubmitHandleClick}

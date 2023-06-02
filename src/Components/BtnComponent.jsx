@@ -4,10 +4,17 @@ export default function BtnComponent({
   type,
   label,
   style,
+  disabled,
 }) {
   return (
     <div>
-      <button className={className} onClick={onClick} type={type} style={style}>
+      <button
+        disabled={disabled}
+        className={className}
+        onClick={onClick}
+        type={type}
+        style={style}
+      >
         {label}
       </button>
     </div>
