@@ -57,6 +57,10 @@ export default function EditScreen({
     setDropdown(e.target.value);
   };
 
+  const handleEditClearClick = () => {
+    setCurrentValue(" ");
+  };
+
   useEffect(() => {
     currentdata();
     getcurrentDropdown();
@@ -86,51 +90,72 @@ export default function EditScreen({
         aria-describedby="alert-dialog-description"
       >
         <DialogTitle id="alert-dialog-title">
-          <h1>EDIT SCREEN</h1>
+          <h1 style={{ textAlign: "center" }}>EDIT TASK</h1>
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            {EditId}
-
             <form onSubmit={submitClick}>
-              Task Name :{" "}
+              <h5>Task Name :</h5>{" "}
               <InputComponent
                 value={currentValue}
                 maxlength="45"
-                style={{ width: "76vh", height: "10vh" }}
+                style={{
+                  width: "50vh",
+                  height: "8vh",
+                  border: "2px solid #000000",
+                }}
                 onChange={handleChangeTodo}
               />
-              <div>
-                <span style={{ color: "red", display: "inline-block" }}>
-                  <h3>{currentValue.length}</h3>
-                </span>
-                <h3 style={{ color: "#000000", display: "inline-block" }}>
-                  /45
-                </h3>
+              <div style={{ float: "left", marginTop: "3px" }}>
+                <BtnComponent
+                  type="button"
+                  className="btn btn-warning"
+                  label="Clear"
+                  onClick={handleEditClearClick}
+                />
               </div>
-              ADD STATUS :
-              <Dropdown
-                value={currentDropdown}
-                options={options}
-                onChange={handleDropdown}
-              />
-              <div class="d-flex flex-row mb-3">
-                <div class="p-2">
-                  <BtnComponent
-                    type="button"
-                    className="btn btn-secondary"
-                    label="Cancel"
-                    onClick={handleEditCancelClick}
-                  />
-                </div>
-                <div class="p-2">
+              <div style={{ float: "right" }}>
+                <span style={{ color: "red", display: "inline-block" }}>
+                  <h4>{currentValue.length}</h4>
+                </span>
+                <h4 style={{ color: "#000000", display: "inline-block" }}>
+                  /45
+                </h4>
+              </div>
+              <div
+                class="d-flex justify-content-center"
+                style={{ marginTop: "15px" }}
+              >
+                <div>
                   {" "}
-                  <BtnComponent
-                    type="submit"
-                    className="btn btn-primary"
-                    label="Update"
+                  <h5>Add Status :</h5>
+                  <Dropdown
+                    value={currentDropdown}
+                    options={options}
+                    onChange={handleDropdown}
+                    style={{
+                      width: "19vh",
+                      height: "6vh",
+                      border: "2px solid #000000",
+                    }}
                   />
                 </div>
+              </div>
+              <div
+                class="d-flex justify-content-around"
+                style={{ marginTop: "20px" }}
+              >
+                <BtnComponent
+                  type="button"
+                  className="btn btn-secondary"
+                  label="Cancel"
+                  onClick={handleEditCancelClick}
+                />
+                <BtnComponent
+                  type="submit"
+                  className="btn btn-success"
+                  label="Update"
+                />
               </div>
             </form>
           </DialogContentText>

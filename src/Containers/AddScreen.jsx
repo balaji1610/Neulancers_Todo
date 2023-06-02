@@ -20,7 +20,7 @@ export default function AddScreen({
   SubmitHandleClick,
   textarea,
   getStatus,
-  handleEditClear,
+  handleAddClear,
 }) {
   const options = [
     { value: "Todo", label: "Todo" },
@@ -60,7 +60,7 @@ export default function AddScreen({
                     type="button"
                     className="btn btn-warning"
                     label="Clear"
-                    onClick={handleEditClear}
+                    onClick={handleAddClear}
                   />
                 </div>
                 <div style={{ float: "right" }}>

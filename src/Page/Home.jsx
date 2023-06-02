@@ -53,7 +53,7 @@ export default function Home() {
     const changeGetValue = (e) => {
       setGetStatus(e.target.value);
     };
-    const handleEditClear = () => {
+    const handleAddClear = () => {
       setTextArea("");
     };
     const SubmitHandleClick = (e) => {
@@ -76,7 +76,7 @@ export default function Home() {
       changeTextarea,
       changeGetValue,
       SubmitHandleClick,
-      handleEditClear,
+      handleAddClear,
     };
   })();
   const {
@@ -85,7 +85,7 @@ export default function Home() {
     changeTextarea,
     changeGetValue,
     SubmitHandleClick,
-    handleEditClear,
+    handleAddClear,
   } = AddscrenModuleOperations;
 
   //Edit Screen Module
@@ -129,7 +129,7 @@ export default function Home() {
         <AddScreen
           open={addmodel}
           onClick={handleCancelAddicon}
-          handleEditClear={handleEditClear}
+          handleAddClear={handleAddClear}
           inputChange={changeTextarea}
           dropdown={changeGetValue}
           SubmitHandleClick={SubmitHandleClick}
