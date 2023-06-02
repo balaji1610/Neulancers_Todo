@@ -10,7 +10,10 @@ export default function MainHomeScreen({
   return (
     <div>
       <div className="container text-center">
-        <div className="col-md-12 col-sm-12">
+        <div
+          className="col-md-12 col-sm-12"
+          style={{ overflowX: "hidden", height: "50vh" }}
+        >
           <table class="table ">
             <thead class="table-primary">
               <tr>
