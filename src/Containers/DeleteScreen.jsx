@@ -1,9 +1,14 @@
+import * as React from "react";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
+import Slide from "@mui/material/Slide";
 import BtnComponent from "../Components/BtnComponent";
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
 export default function DeleteScreen({
   open,
   handleDeleteCancel,
@@ -21,6 +26,8 @@ export default function DeleteScreen({
     <div>
       <Dialog
         open={open}
+        TransitionComponent={Transition}
+        keepMounted
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
@@ -54,7 +61,7 @@ export default function DeleteScreen({
                     <BtnComponent
                       type="button"
                       className="btn btn-primary"
-                      label="Yes"
+                      label="Delete"
                       onClick={handleDeleteYes}
                     />
                   </div>
