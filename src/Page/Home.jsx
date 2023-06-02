@@ -69,9 +69,12 @@ export default function Home() {
 
   //Edit Screen Module
   const [editScreen, SetEditScreen] = useState(false);
+  const [EditId, setEditId] = useState("");
   const EditScreenModule = (function () {
-    const hadleEditClick = () => {
+    const hadleEditClick = (el) => {
       SetEditScreen(true);
+      setEditId(el);
+      console.log(EditId, "EditId");
     };
 
     const handleEditCancelClick = () => {
@@ -120,6 +123,9 @@ export default function Home() {
         <EditScreen
           open={editScreen}
           handleEditCancelClick={handleEditCancelClick}
+          EditId={EditId}
+          Dataarray={Dataarray}
+          setDataArray={setDataArray}
         />
       )}
 

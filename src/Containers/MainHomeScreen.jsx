@@ -22,18 +22,17 @@ export default function MainHomeScreen({
               </tr>
             </thead>
             <tbody>
-              {Dataarray.map((item) => {
-                const { id, taskname, status } = item;
+              {Dataarray.map((item, index) => {
                 return (
-                  <tr>
-                    <th scope="row">{id}</th>
+                  <tr key={index}>
+                    <th scope="row">{index}</th>
 
-                    <td>{taskname}</td>
-                    <td>{status}</td>
+                    <td>{item.taskname}</td>
+                    <td>{item.status}</td>
                     <td>
                       <span
                         style={{ display: "inline-block" }}
-                        onClick={() => onClickEdit(id)}
+                        onClick={() => onClickEdit(index)}
                       >
                         <ImageComponent
                           width="32"
@@ -47,7 +46,7 @@ export default function MainHomeScreen({
                     <td>
                       <span
                         style={{ display: "inline-block" }}
-                        onClick={() => onClickDelete(id)}
+                        onClick={() => onClickDelete(index)}
                       >
                         {" "}
                         <ImageComponent
