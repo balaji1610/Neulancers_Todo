@@ -5,7 +5,7 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import BtnComponent from "../Components/BtnComponent";
 import InputComponent from "../Components/InputComponent";
-
+import Dropdown from "../Components/DropdownComponent";
 import { useState, useEffect } from "react";
 
 export default function EditScreen({
@@ -22,7 +22,7 @@ export default function EditScreen({
   ];
 
   const [currentValue, setCurrentValue] = useState("");
-
+  const [currentDropdown, setDropdown] = useState("");
   const currentdata = () => {
     const eed = Dataarray.map((el, index) => {
       if (index === EditId) {
@@ -33,12 +33,28 @@ export default function EditScreen({
     setCurrentValue(eed.join(""));
   };
 
+  const getcurrentDropdown = () => {
+    const lit = Dataarray.map((elm, index) => {
+      if (index === EditId) {
+        return elm.status;
+      }
+    });
+    setDropdown(lit.join(""));
+  };
+
   const handleChangeTodo = (e) => {
-    setCurrentValue(e.target.value);
+    if (currentValue.length < 45) {
+      setCurrentValue(e.target.value);
+    }
+  };
+
+  const handleDropdown = (e) => {
+    setDropdown(e.target.value);
   };
 
   useEffect(() => {
     currentdata();
+    getcurrentDropdown();
   }, []);
 
   const submitClick = (e) => {
@@ -46,7 +62,7 @@ export default function EditScreen({
 
     Dataarray.map((elm, index) => {
       if (index === EditId) {
-        return (elm.taskname = currentValue);
+        return (elm.taskname = currentValue), (elm.status = currentDropdown);
       }
     });
     setCurrentValue(" ");
@@ -77,24 +93,18 @@ export default function EditScreen({
               />
               <div>
                 <span style={{ color: "red", display: "inline-block" }}>
-                  <h3>
-                    {/* {
-                      Dataarray.find((items, index) => index === EditId)
-                        .taskname.length
-                    } */}
-                  </h3>
+                  <h3>{currentValue.length}</h3>
                 </span>
                 <h3 style={{ color: "#000000", display: "inline-block" }}>
                   /45
                 </h3>
               </div>
               ADD STATUS :
-              {/* <Dropdown
-                value={
-                  Dataarray.find((items, index) => index === EditId).status
-                }
+              <Dropdown
+                value={currentDropdown}
                 options={options}
-              /> */}
+                onChange={handleDropdown}
+              />
               <div class="d-flex flex-row mb-3">
                 <div class="p-2">
                   <BtnComponent
