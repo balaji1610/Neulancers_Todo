@@ -36,9 +36,10 @@ export default function DeleteScreen({
           <DialogContentText id="alert-dialog-description">
             <h3
               style={{
-                color: "red",
+                color: "#616161",
                 marginTop: "5vh",
                 marginBottom: "5vh",
+                fontWeight: "bold",
               }}
             >
               Are You Want To Delete This Item ?{" "}
@@ -60,7 +61,7 @@ export default function DeleteScreen({
                     {" "}
                     <BtnComponent
                       type="button"
-                      className="btn btn-primary"
+                      className="btn btn-danger"
                       label="Delete"
                       onClick={handleDeleteYes}
                     />
