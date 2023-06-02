@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import TopHomeScreen from "../Containers/TopHomeScreen";
 import MainHomeScreen from "../Containers/MainHomeScreen";
 import AddScreen from "../Containers/AddScreen";
@@ -6,8 +6,24 @@ import EditScreen from "../Containers/EditScreen";
 import DeleteScreen from "../Containers/DeleteScreen";
 
 export default function Home() {
-  const [Dataarray, setDataArray] = useState([]);
+  // const [Dataarray, setDataArray] = useState([]);
+  // Load items from local storage on component mount
 
+  const [Dataarray, setDataArray] = useState(() => {
+    return JSON.parse(localStorage.getItem("Dataarray")) || [];
+  });
+
+  // useEffect(() => {
+  //   const storedItems = localStorage.getItem("Dataarray");
+  //   if (storedItems) {
+  //     setDataArray(JSON.parse(storedItems));
+  //   }
+  // }, []);
+
+  // Save items to local storage whenever it changes
+  useEffect(() => {
+    localStorage.setItem("Dataarray", JSON.stringify(Dataarray));
+  }, [Dataarray]);
   //AddscrenModule
   const [addmodel, setModel] = useState(false);
 
@@ -19,7 +35,6 @@ export default function Home() {
   const AddscrenModuleOperations = (function () {
     const handleAddicon = () => {
       setModel(true);
-      console.log(Dataarray);
     };
 
     const handleCancelAddicon = () => {
@@ -98,6 +113,7 @@ export default function Home() {
     return { handleDeleteClick, handleDeleteCancel };
   })();
   const { handleDeleteClick, handleDeleteCancel } = DeleteScreenModule;
+
   return (
     <div>
       <TopHomeScreen onClick={handleAddicon} />

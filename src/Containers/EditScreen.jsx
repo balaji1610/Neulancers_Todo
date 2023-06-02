@@ -65,11 +65,13 @@ export default function EditScreen({
   const submitClick = (e) => {
     e.preventDefault();
 
-    Dataarray.map((elm, index) => {
-      if (index === EditId) {
-        return (elm.taskname = currentValue), (elm.status = currentDropdown);
-      }
+    const updateItems = Dataarray.map((elm, index) => {
+      return index === EditId
+        ? { ...elm, taskname: currentValue, status: currentDropdown }
+        : elm;
     });
+
+    setDataArray(updateItems);
     setCurrentValue(" ");
   };
 
