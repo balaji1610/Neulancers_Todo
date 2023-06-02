@@ -88,8 +88,9 @@ export default function Home() {
   //Delete Screen Module
   const [deleteItem, setDeleteItem] = useState(false);
   const DeleteScreenModule = (function () {
-    const handleDeleteClick = () => {
+    const handleDeleteClick = (arg) => {
       setDeleteItem(true);
+      setEditId(arg);
     };
     const handleDeleteCancel = () => {
       setDeleteItem(false);
@@ -133,6 +134,9 @@ export default function Home() {
         <DeleteScreen
           open={deleteItem}
           handleDeleteCancel={handleDeleteCancel}
+          EditId={EditId}
+          Dataarray={Dataarray}
+          setDataArray={setDataArray}
         />
       )}
     </div>

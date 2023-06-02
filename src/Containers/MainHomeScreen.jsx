@@ -25,7 +25,7 @@ export default function MainHomeScreen({
               {Dataarray.map((item, index) => {
                 return (
                   <tr key={index}>
-                    <th scope="row">{index}</th>
+                    <th scope="row">{index + 1}</th>
 
                     <td>{item.taskname}</td>
                     <td>{item.status}</td>
