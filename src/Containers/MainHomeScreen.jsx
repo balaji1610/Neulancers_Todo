@@ -2,17 +2,26 @@ import Editicon from "../Images/edit.png";
 import Deleteicon from "../Images/delete.png";
 import ImageComponent from "../Components/ImageComponent";
 
+import TodoIcon from "../Images/todo.png";
+import PendingICON from "../Images/pending.png";
+import CompletedICON from "../Images/completed.png";
 export default function MainHomeScreen({
   onClickEdit,
   onClickDelete,
   Dataarray,
 }) {
+  const imageStatus = {
+    Todo: TodoIcon,
+    Pending: PendingICON,
+    Completed: CompletedICON,
+  };
+
   return (
     <div>
       <div className="container text-center">
         <div
           className="col-md-12 col-sm-12"
-          style={{ overflowX: "hidden", height: "50vh" }}
+          style={{ overflowX: "hidden", height: "55vh" }}
         >
           <table class="table ">
             <thead class="table-primary">
@@ -26,12 +35,31 @@ export default function MainHomeScreen({
             </thead>
             <tbody>
               {Dataarray.map((item, index) => {
+                const { taskname, status } = item;
                 return (
                   <tr key={index}>
                     <th scope="row">{index + 1}</th>
 
-                    <td>{item.taskname}</td>
-                    <td>{item.status}</td>
+                    <td>
+                      <h4
+                        style={{
+                          textDecoration:
+                            status === "Completed" && "line-through",
+                          color: "#000000",
+                        }}
+                      >
+                        <span style={{ color: "#000000" }}>{taskname}</span>
+                      </h4>
+                    </td>
+                    <td>
+                      <ImageComponent
+                        width="40"
+                        height="40"
+                        src={imageStatus[status]}
+                        alt="box-important--v1"
+                        style={{ display: "inline-block" }}
+                      />
+                    </td>
                     <td>
                       <span
                         style={{ display: "inline-block" }}
