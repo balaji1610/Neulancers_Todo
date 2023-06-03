@@ -33,8 +33,8 @@ export default function MainHomeScreen({
                 <th scope="col">S.NO</th>
                 <th scope="col">Task Name</th>
                 <th scope="col">Task Status</th>
-                <th scope="col">EDIT</th>
-                <th scope="col">DELTE</th>
+                <th scope="col">Edit</th>
+                <th scope="col">Delete</th>
               </tr>
             </thead>
             <tbody>
