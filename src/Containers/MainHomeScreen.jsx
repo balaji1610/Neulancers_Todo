@@ -1,3 +1,7 @@
+import * as React from "react";
+import Button from "@mui/material/Button";
+import Tooltip from "@mui/material/Tooltip";
+
 import Editicon from "../Images/edit.png";
 import Deleteicon from "../Images/delete.png";
 import ImageComponent from "../Components/ImageComponent";
@@ -52,13 +56,18 @@ export default function MainHomeScreen({
                       </h4>
                     </td>
                     <td>
-                      <ImageComponent
-                        width="40"
-                        height="40"
-                        src={imageStatus[status]}
-                        alt="box-important--v1"
-                        style={{ display: "inline-block" }}
-                      />
+                      <Tooltip title={status}>
+                        <Button>
+                          {" "}
+                          <ImageComponent
+                            width="40"
+                            height="40"
+                            src={imageStatus[status]}
+                            alt="box-important--v1"
+                            style={{ display: "inline-block" }}
+                          />
+                        </Button>
+                      </Tooltip>
                     </td>
                     <td>
                       <span
