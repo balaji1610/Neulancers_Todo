@@ -10,13 +10,14 @@
       content="Web site created using create-react-app"
     />
     <meta name="author" name="Balaji" />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+
+    <link rel="icon" type="image/png" href="/image1.png" id="icon" />
+
     <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
+
+ 
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
       Only files inside the `public` folder can be referenced from the HTML.
@@ -26,6 +27,54 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>Neulancers_Todo</title>
+    <script language="javascript">
+      var rev = "fwd";
+      function titlebar(val) {
+        var msg = "TO-DO-LIST";
+        var res = " ";
+        var speed = 100;
+        var pos = val;
+        msg = "   |-" + msg + "-|";
+        var le = msg.length;
+        if (rev == "fwd") {
+          if (pos < le) {
+            pos = pos + 1;
+            scroll = msg.substr(0, pos);
+            document.title = scroll;
+            timer = window.setTimeout("titlebar(" + pos + ")", speed);
+          } else {
+            rev = "bwd";
+            timer = window.setTimeout("titlebar(" + pos + ")", speed);
+          }
+        } else {
+          if (pos > 0) {
+            pos = pos - 1;
+            var ale = le - pos;
+            scrol = msg.substr(ale, le);
+            document.title = scrol;
+            timer = window.setTimeout("titlebar(" + pos + ")", speed);
+          } else {
+            rev = "fwd";
+            timer = window.setTimeout("titlebar(" + pos + ")", speed);
+          }
+        }
+      }
+      titlebar(0);
+      function iconChange() {
+        setTimeout(function () {
+          document.getElementById("icon").href = "./Green.png";
+        }, 333);
+        setTimeout(function () {
+          document.getElementById("icon").href = "./Red.png";
+        }, 667);
+      }
+
+      window.onload = function () {
+        setInterval(function () {
+          iconChange();
+        }, 250);
+      };
+    </script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
