@@ -1,5 +1,13 @@
 
-https://balajitodolistapp.netlify.app/
+https://todolist-2q5e.onrender.com
+
+#Project description
+
+1) Enable users to create a task and edit and delete also features available
+
+2) data is stored in your device through local storage
+
+3) Ensure responsiveness across different devices and screen sizes.
 
 # Getting Started with Create React App
 
