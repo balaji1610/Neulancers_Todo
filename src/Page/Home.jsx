@@ -4,7 +4,7 @@ import MainHomeScreen from "../Containers/MainHomeScreen";
 import AddScreen from "../Containers/AddScreen";
 import EditScreen from "../Containers/EditScreen";
 import DeleteScreen from "../Containers/DeleteScreen";
-
+import Footer from "../Containers/Footer";
 export default function Home() {
   // const [Dataarray, setDataArray] = useState([]);
   // Load items from local storage on component mount
@@ -163,6 +163,7 @@ export default function Home() {
           setDataArray={setDataArray}
         />
       )}
+      <Footer />
     </div>
   );
 }
