@@ -29,6 +29,7 @@ export default function EditScreen({
   const [currentValue, setCurrentValue] = useState("");
   const [currentDropdown, setDropdown] = useState("");
   const currentdata = () => {
+    // eslint-disable-next-line array-callback-return
     const eed = Dataarray.map((el, index) => {
       if (index === EditId) {
         return el.taskname;
@@ -39,6 +40,7 @@ export default function EditScreen({
   };
 
   const getcurrentDropdown = () => {
+    // eslint-disable-next-line array-callback-return
     const lit = Dataarray.map((elm, index) => {
       if (index === EditId) {
         return elm.status;
@@ -64,6 +66,7 @@ export default function EditScreen({
   useEffect(() => {
     currentdata();
     getcurrentDropdown();
+    // eslint-disable-next-line
   }, []);
 
   const submitClick = (e) => {
@@ -79,7 +82,6 @@ export default function EditScreen({
     setCurrentValue(" ");
   };
 
-  console.log(Dataarray, "Dataarray");
   return (
     <div>
       <Dialog

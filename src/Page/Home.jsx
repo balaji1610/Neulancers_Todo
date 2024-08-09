@@ -68,6 +68,7 @@ export default function Home() {
       };
       const updateData = [...Dataarray, DataStructure];
       setDataArray(updateData);
+      setModel(false);
     };
 
     return {
