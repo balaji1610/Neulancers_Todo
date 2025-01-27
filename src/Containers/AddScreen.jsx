@@ -8,6 +8,7 @@ import Slide from "@mui/material/Slide";
 import BtnComponent from "../Components/BtnComponent";
 import InputComponent from "../Components/InputComponent";
 import Dropdown from "../Components/DropdownComponent";
+
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
@@ -22,11 +23,13 @@ export default function AddScreen({
   getStatus,
   handleAddClear,
 }) {
+  
   const options = [
     { value: "Todo", label: "Todo" },
     { value: "Pending", label: "Pending" },
     { value: "Completed", label: "Completed" },
   ];
+
   return (
     <div>
       <Dialog

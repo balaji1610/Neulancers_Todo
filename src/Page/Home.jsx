@@ -5,6 +5,7 @@ import AddScreen from "../Containers/AddScreen";
 import EditScreen from "../Containers/EditScreen";
 import DeleteScreen from "../Containers/DeleteScreen";
 import Footer from "../Containers/Footer";
+
 export default function Home() {
   // const [Dataarray, setDataArray] = useState([]);
   // Load items from local storage on component mount
@@ -31,8 +32,18 @@ export default function Home() {
   const [textarea, setTextArea] = useState("");
   const [getStatus, setGetStatus] = useState("");
 
+  const [editScreen, SetEditScreen] = useState(false);
+  const [EditId, setEditId] = useState("");
+  const [deleteItem, setDeleteItem] = useState(false);
+
   //Add screenMoudle Operations
-  const AddscrenModuleOperations = (function () {
+  //   The function AddscrenModuleOperations is a module-like pattern that
+  // groups related operations into a single unit.
+  // It handles various operations such as showing/hiding a modal,
+  // managing form inputs, clearing inputs, and updating a data array.
+
+  // It returns an object containing several functions,
+  const AddscrenModuleOperations = () => {
     const handleAddicon = () => {
       setModel(true);
     };
@@ -53,20 +64,24 @@ export default function Home() {
     const changeGetValue = (e) => {
       setGetStatus(e.target.value);
     };
+
     const handleAddClear = () => {
       setTextArea("");
     };
+
     const SubmitHandleClick = (e) => {
       e.preventDefault();
       setTextArea("");
       setGetStatus("");
 
-      const DataStructure = {
-        id: Dataarray.length + 1,
-        taskname: textarea,
-        status: getStatus,
-      };
-      const updateData = [...Dataarray, DataStructure];
+      const updateData = [
+        ...Dataarray,
+        {
+          id: Dataarray.length + 1,
+          taskname: textarea,
+          status: getStatus,
+        },
+      ];
       setDataArray(updateData);
       setModel(false);
     };
@@ -79,7 +94,8 @@ export default function Home() {
       SubmitHandleClick,
       handleAddClear,
     };
-  })();
+  };
+
   const {
     handleAddicon,
     handleCancelAddicon,
@@ -87,16 +103,14 @@ export default function Home() {
     changeGetValue,
     SubmitHandleClick,
     handleAddClear,
-  } = AddscrenModuleOperations;
+  } = AddscrenModuleOperations();
 
   //Edit Screen Module
-  const [editScreen, SetEditScreen] = useState(false);
-  const [EditId, setEditId] = useState("");
-  const EditScreenModule = (function () {
+
+  const EditScreenModule = () => {
     const hadleEditClick = (el) => {
       SetEditScreen(true);
       setEditId(el);
-      console.log(EditId, "EditId");
     };
 
     const handleEditCancelClick = () => {
@@ -104,13 +118,12 @@ export default function Home() {
     };
 
     return { hadleEditClick, handleEditCancelClick };
-  })();
+  };
 
-  const { hadleEditClick, handleEditCancelClick } = EditScreenModule;
+  const { hadleEditClick, handleEditCancelClick } = EditScreenModule();
 
   //Delete Screen Module
-  const [deleteItem, setDeleteItem] = useState(false);
-  const DeleteScreenModule = (function () {
+  const DeleteScreenModule = () => {
     const handleDeleteClick = (arg) => {
       setDeleteItem(true);
       setEditId(arg);
@@ -119,8 +132,8 @@ export default function Home() {
       setDeleteItem(false);
     };
     return { handleDeleteClick, handleDeleteCancel };
-  })();
-  const { handleDeleteClick, handleDeleteCancel } = DeleteScreenModule;
+  };
+  const { handleDeleteClick, handleDeleteCancel } = DeleteScreenModule();
 
   return (
     <div>

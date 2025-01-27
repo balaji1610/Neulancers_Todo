@@ -9,6 +9,7 @@ import ImageComponent from "../Components/ImageComponent";
 import TodoIcon from "../Images/todo.png";
 import PendingICON from "../Images/pending.png";
 import CompletedICON from "../Images/completed.png";
+
 export default function MainHomeScreen({
   onClickEdit,
   onClickDelete,
@@ -40,6 +41,7 @@ export default function MainHomeScreen({
             <tbody>
               {Dataarray.map((item, index) => {
                 const { taskname, status } = item;
+
                 return (
                   <tr key={index}>
                     <th scope="row">{index + 1}</th>

@@ -2,6 +2,7 @@ import CurrentDate from "./CurrentDate";
 
 import ImageComponent from "../Components/ImageComponent";
 import AddPlusIcon from "../Images/AddPlusIcon.png";
+
 export default function TopHomeScreen({ onClick }) {
   return (
     <div>

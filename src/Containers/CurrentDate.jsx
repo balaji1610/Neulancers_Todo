@@ -6,7 +6,7 @@ export default function CurrentDate() {
   const CurrentData = new Intl.DateTimeFormat("en-GB", options1).format(date);
   return (
     <div>
-      <h4 style={{ color: "#FF5252" }}>{CurrentData}</h4>
+      <h4 style={{ color: "gray" }}>{CurrentData}</h4>
     </div>
   );
 }

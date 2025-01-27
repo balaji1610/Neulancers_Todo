@@ -34,7 +34,11 @@ export default function Footer() {
     <div>
       <div style={footerCard_Flex}>
         <div style={innerDiv}>
-          <a href="https://github.com/balaji1610" target="_blank">
+          <a
+            href="https://github.com/balaji1610"
+            target="_blank"
+            rel="noreferrer"
+          >
             <img
               width="50"
               height="50"
@@ -48,6 +52,7 @@ export default function Footer() {
           <a
             href="https://www.linkedin.com/in/balaji-m-05778a218/"
             target="_blank"
+            rel="noreferrer"
           >
             <img
               width="50"
@@ -68,6 +73,7 @@ export default function Footer() {
               href="https://balajicv.onrender.com"
               target="_blank"
               style={balajiLink}
+              rel="noreferrer"
             >
               BALAJI
             </a>
